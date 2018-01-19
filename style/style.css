@@ -1,0 +1,100 @@
+    body {
+font: 10px sans-serif;
+}
+ 
+.axis path, .axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
+ 
+.letter-A {
+fill: blue;
+}
+.letter-B{
+fill: red-violet;
+}
+ 
+.letter-C {
+fill: green-yellow;
+}
+ 
+.letter-D {
+fill: yellow-orange;
+}
+.letter-E {
+fill: orange;
+}
+ 
+.letter-F {
+fill: wheat;
+}
+.letter-G{
+fill:red;
+}
+ 
+.letter-H {
+fill: #FF6347;
+}
+ 
+.letter-I {
+fill: violet ;
+}
+.letter-J {
+fill: #008080;
+}
+.letter-K {
+fill: #D2B48C;
+}
+.letter-L{
+fill: #4682B4;
+}
+ 
+.letter-M {
+fill: #00FF7F;
+}
+ 
+.letter-N {
+fill: #708090;
+}
+.letter-O {
+fill: #6A5ACD;
+}
+.letter-P {
+fill: #87CEEB;
+}
+.letter-Q{
+fill: #A0522D;
+}
+ 
+.letter-R {
+fill: #2E8B57;
+}
+ 
+.letter-S {
+fill: #F4A460;
+}
+.letter-T {
+fill: #8B4513;
+}
+.letter-U {
+fill:   #4169E1;
+}
+.letter-V{
+fill: #663399;
+}
+ 
+.letter-W {
+fill: #800080;
+}
+ 
+.letter-X {
+fill: red;
+}
+.letter-Y {
+fill: teal;
+}
+ 
+.letter-Z{
+    fill:olive-green ;
+}

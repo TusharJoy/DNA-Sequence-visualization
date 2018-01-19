@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        <!-- <script src="js/dom.js"></script> --> 
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <script src="js/d3.min.js"></script>
+        <script src= "js/valueofinput.js"></script>
+       <!-- <script src="js/svg.js"></script>  -->
+       <!-- <script src="js/file.js"></script> -->
+
+
+    </head>
+    <body onload=("script");>
+         <div class="navbar navbar-default navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Bio logo</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="sequencelogo.html">sequencelogo</a></li>
+                    <li><a href="multiviewlogo.html">multiviewlogo</a></li>
+                    <li><a href="mutationlogo.html">mutationlogo</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        </div>
+        <!--end Navigation-->
+        <div class="container-fluid">
+            <!--start fluid container for responsive content-->
+            <div class="row"  >
+                <!--outermost row container-->
+                <h1>
+                    <p class="text-center">Bio logo</p>
+                </h1>
+              <!--   <form enctype="multipart/form-data" action="" name="logoform" method="post"> -->
+                    <!--start WebLogo form-->
+                    <div class="row">
+                        <!--open sequence data form row-->
+                        <div class="col-sm-1">
+                            <br>
+                        </div>
+                        <!--left margin column for sequence data form -->
+                        <div class="col-sm-10">
+                            <!--central column for sequence data form-->
+                            <div class="thumbnail clearfix row" id="thumbnail-1">
+                                <!--open thumbnail 1 div-->
+                                <h2> Sequence Data Input:</h2>
+                                <hr>
+                                <div class="form-group clearfix">
+                                    <!--start clearfix div for browse & open buttons-->
+                                    <div class="col-sm-4">
+                                        <input type="file" id="affectedsequence" name="sequences_file"></input>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!--center spacing div-->
+                                    </div>
+                                    <!--start URL download container div-->
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <!--end col-sm-10 central column for sequence data form-->
+                        <div class="col-sm-1">
+                            <!--start margin row for sequence data form-->
+                            <br>
+                        </div>
+                        <!--end margin row for sequence data form-->
+                    </div>
+                    <!--end sequence data form row-->
+                    <div class="row">
+                        <div class="col-sm-12 center-block">
+                            <button id="singlebutton" name="singlebutton" onclick="calculation()" class="btn btn-primary center-block">
+                            Generate Bio Logo
+                            </button>
+                        </div>
+
+                    </div>
+                    <div  class="row">
+                         <div class="col-sm-12" id="hiddenblock"  >
+                         </div>
+                    </div>
+   
+
+                    <div class="row">
+                        <!--start row for logo options-->
+
+                    <form enctype="multipart/form-data" name="logoform" onsubmit="getformvalue(this);>    
+                        
+                        <div class="col-sm-1">
+                            <br>
+                        </div>
+                        <!--left column margin for logo options form-->
+                        <div class="col-sm-10" id="wrap">
+                            <!--central col-sm-10 logo options column-->
+                            <div class="thumbnail col-sm-14" id="thumbnail-2">
+                                <!--start thumbnail-2 div; left side logo options-->
+                                <div class="form-group">
+                                    <!--open title div-->
+                                    <label>Title:</label>
+                                    <input type="text" name="logo_title" value="" maxlength="80" placeholder="max 80 char " id="title">
+                                </div>
+                                <!--close title div-->
+                                <div class="form-group clearfix">
+                                    <!--open output format div-->
+                                    <label>Output Format:</label>
+                                    <!--open div for format options-->
+                                    <select name="format">
+                                        <option  value="png_print">PNG</option>
+                                        <option  value="pdf">PDF </option>
+                                        <option  value="svg">SVG </option>
+                                    </select>
+                                    <!--close div for format options-->
+                                </div>
+                                <!--close output format div-->
+                                <!--open div for sequence type option-->
+                                <div class="form-group">
+                                    <label >Sequence type </label>
+                                    <select type="submit" name="alphabet">
+                                        <option  value="alphabet_protein">protein</option>
+                                        <option  value="alphabet_dna">dna</option>
+                                    </select>
+                                </div>
+ 
+                                <div class="form-group">
+                                    <!--open Stacks per Line div-->
+                                    <label >Stacks per Line:</label>
+                                    <input type="text" name="stacks_per_line" size="8" value="40" placeholder="40">
+                                </div>
+                                <div class="form-group">
+
+                                <div class="form-group">
+                                    <!--open first position number div-->
+                                    <label > First position number: </label>
+                                    <input type="text" name="first_index" placeholder="max length 80" size="4" maxlength="80" value="1">
+                                </div>
+                                <!--close first position div-->
+                                <div class="form-group">
+                                    <!--open logo range div-->
+                                    <label > Logo range: </label>
+                                    <input type="text" placeholder="logo start" name="logo_start" value="" size="4" maxlength="80"> -
+                                    <input type="text" placeholder="logo end" name="logo_end" value="" id="formGroupInputSmall" size="4" maxlength="80">
+                                </div>
+                                <!--close logo range div-->
+                                <div class="form-group">
+                                    <!--open figure label div-->
+                                    <label>Figure label:</label>
+                                    <input type="text" name="logo_label" value="" maxlength="100">
+                                </div>
+
+                                <div id="padding-div">
+                                    <br>
+                                </div>
+
+                                <div class="form-group">
+                                    
+                                    <input type="button" class="btn btn-success btn-lg" onclick="getformvalue(this)" value="Submit Logo Details">
+
+                                </div>
+
+                        </div>
+                    </form>
+                    </div>
+                    <!--end row for logo options-->
+             <!--   </form> --> 
+                <!--end WebLogo form-->
+                <div class="footer row" id="footer">
+                    <br>
+                     
+
+                </div>
+            </div>
+            <!--end outermost row container-->
+        </div>
+        <!--end fluid container for responsive content-->
+        <!--fallback to server-hosted files in case CDNs fail-->
+
+
+<script type="text/javascript">
+                            var affectedarray=[];
+                            var affectedlength;
+                            
+                            
+                            
+                            document.getElementById('affectedsequence').onchange = function(){
+                            
+                              var file = this.files[0];
+                            
+                              var reader = new FileReader();
+                              reader.onload = function(progressEvent){
+                            
+                                var text=this.result;
+                                var newtext=text.replace(/^.*>.*$/mg, "@");
+                                var lines = newtext.split('@');
+                                var size=lines[1].length;
+                                var size2=lines.length;
+                            
+                                lengthofgchar=size2;  
+                                //to keep track of the frequency of alphabets
+                                //we are starting from i=1 and j=1 because in the first line every first character is the main header which is useless
+                                var freq= [];
+                                for(var i=0;i<size;i++)
+                                {
+                                   freq[i] = new Array(26).fill(0);
+                                }
+                                for(var j=1;j<size;j++)
+                                {
+                                    for(var i=1;i<size2;i++)
+                                    {
+                                        if(!(lines[i][j]==undefined | lines[i][j]==null ))
+                                        {
+                                            var index=lines[i][j].charCodeAt()-65;
+                                            //console.log(index);
+                                            /*if(index<65 | index >90)
+                                                console.log(index);*/
+                                            if(index>=0 && index <=25 /*&& lines[i][j].charCodeAt()!=germlinearray[j][0]*/)
+                                                freq[j-1][index]=freq[j-1][index]+1;
+                                        }
+                                    }
+                                   // germlinearray[j-1][1]=lengthofgchar;
+                                }
+                                //console.log(size2);
+                               // console.log(lengthofgchar);
+                                affectedlength=freq.length;
+
+                                console.log(affectedlength) ;
+                                
+                                affectedarray=Array.from(freq);
+                            
+                              // console.log(affectedarray);
+                              };
+                              reader.readAsText(file);
+                            };
+                            
+                            
+                            //console.log(germlinearray);
+                            
+                            function calculation(){
+                                /*var value;
+                                for(var j=1;j<germlinelength;j++)  //for cancelling the characters which matches the germline character
+                                {
+                                    var mainacid=germlinearray[j][0]-65;
+                                    value=affectedarray[j][mainacid];
+                                    germlinearray[j][1]-=value; 
+                                    affectedarray[j][mainacid]=0;
+                                    console.log(germlinearray[j][1]);
+                                }*/
+                                visualization(affectedlength,affectedarray);
+                                //console.log(germlinearray);
+                            };
+                        
+                   function visualization(affectedlength,mutatedarray)
+                    {
+                    var lengthofxaxis;
+         
+                    lengthofxaxis=affectedlength;
+
+
+                    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+                    width = lengthofxaxis*15 - margin.left - margin.right,
+                    height = 200 - margin.top - margin.bottom;
+
+                    var x = d3.scale.ordinal()
+                    .rangeRoundBands([0, width],0);
+                    var x2 = d3.scale.ordinal().rangeRoundBands([width,0],0) ;
+
+                    var y = d3.scale.linear()
+                    .range([height, 0]);
+
+                    var y2 =  d3.scale.linear()
+                    .range([0,height]);   
+
+                    var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom")
+                        .tickFormat("");
+                        
+                    var xAxis2 =d3.svg.axis()
+                                .scale(x)
+                                .orient("bottom") ;
+
+                    var yAxis2=  d3.svg.axis()
+                        .scale(y2)
+                        .orient("left");
+
+                    var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+                    var svg = d3.select("#hiddenblock").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height+300+ margin.top + margin.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+                    var data=mutatedarray.map(function(obj)
+                    {
+                        var temp=new Array();
+                        for(var i=0;i<26;i++)
+                        {
+                            temp[i]=new Array(2);
+                            temp[i].push(new Object());
+                        }
+                        
+                        var j=0,index=-1;
+                        for(var i=0;i<26;i++)
+                        {
+                            if(i!=index)
+                            {
+                                temp[j].letter=String.fromCharCode(i+65);
+                                temp[j].bits=obj[i];
+                                j++;
+                            }
+                        }
+                       return temp;
+                    }) ;
+                    var data1=[];
+                    // var data1=germlinearray.map(function(obj)
+                    // {
+                       
+                    //     var temp=new Array();
+
+                    //     temp[0]=new Array(2);
+                    //     temp[0].push(new Object());
+                    //     temp[0].letter=String.fromCharCode(obj[0]);
+                    //     temp[0].bits=obj[1];
+
+
+                    //    return temp;
+                    // }) ;
+                    data.forEach( function (d){
+
+                        d.sort(function (a, b) {
+                      if (a.bits> b.bits) {
+                        return 1;
+                      } 
+                      if (a.bits < b.bits) {
+                        return -1;
+                      }
+                      return 0;
+                    });
+
+                    });
+
+
+                    data.forEach(function(d) {
+                    var y0 = 0;
+                    d.bits = d.map( function( entry ) { 
+
+                    return { bits: entry.bits, letter: entry.letter, y0: y0, y1 : y0 += +entry.bits };  
+                    }  
+                    )
+                    d.bitTotal = d.bits[d.bits.length-1].y1 ;
+                    });
+
+
+                    data1.forEach(function(d) {
+                    var y0 = 0;
+                    d.bits = d.map( function( entry ) { 
+
+                    return { bits: entry.bits, letter: entry.letter, y0: y0, y1 : y0 += +entry.bits };  
+                    }  
+                    )
+                    d.bitTotal = d.bits[d.bits.length-1].y1 ;
+
+                    });
+
+
+
+                    x.domain( data.map( function(d,i) {return i; } ) );
+                    //x2.domain(data1.map(function(d,i) {return i; } )) ; 
+
+                    var maxBits1 = d3.max( data, function( d ) { return d.bitTotal } );
+                    var maxBits2 = d3.max( data1, function( d ) { return d.bitTotal } );
+
+
+
+                    y.domain([0, maxBits1]);
+                    y2.domain([0,maxBits1]);
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0,0)")
+                        .call(xAxis2);        
+
+
+                    svg.append("g")
+                        .attr("transform","translate(0,"+height+")")
+                        .attr("class" ," y axis")
+                        .call(yAxis2)
+                        
+
+                    svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 10)
+                        .attr("dy", ".11em")
+                        .style("text-anchor", "end")
+                        .text("bits");
+
+
+
+                    var capHeightAdjust = 1.38;
+
+                    var column = svg.selectAll(".sequence-column")
+                        .data(data)
+                        .enter()
+                        .append("g")
+                        .attr("transform", function(d, i) { return "translate(" + (x(i) + (x.rangeBand()/2 )) + ",0)"; })
+                        .attr("class", "sequence-column");
+
+                    // approximation to bring cap-height to full font size
+
+
+                    column
+                        .selectAll("text")
+                        .data(function(d) { return d.bits; })
+                        .enter()
+                        .append("text")
+                        .style("fill-opacity", 0.75)
+                        .attr("y", function(e) { return y(e.y0); })
+                        .text( function(e) { return e.letter; } )
+                        .attr("class", function(e) { return "letter-" + e.letter; } )
+                        .style( "text-anchor", "middle" )
+                        .style( "font-family", "monospace" )
+                        .attr( "textLength", x.rangeBand())
+                        .attr( "lengthAdjust", "spacingAndGlyphs" )
+                        .attr( "font-size", function(e) { return ( y(e.y0) - y(e.y1) ) * capHeightAdjust; } );
+                    // another column under X axis for 
+
+
+                    /*var column1 = svg.selectAll(".sequence-column1")
+                        .data(data1)
+                        .enter()
+                        .append("g")
+                        .attr("transform", function(d, i) {  return "translate("+ (x(i) + (x.rangeBand()/2 )) + ","+2*height+") "; })
+                        .attr("class", "sequence-column1");*/
+
+
+                    column1
+                        .selectAll("text")
+                        .data(function(d) { return d.bits; })
+                        .enter()
+                        .append("text")
+                        .transition()
+                        .attr("transform","rotate(180) scale(-1 1)")
+                        .attr("y", function(e) { return y(e.y0); })
+                        .text( function(e) { return e.letter; } )
+                        .attr("class", function(e) { return "letter-" + e.letter; } )
+                        .style( "text-anchor", "middle" )
+                        .style( "font-family", "monospace" )
+                        .attr( "textLength", x.rangeBand())
+                        .attr( "lengthAdjust", "spacingAndGlyphs" )
+                        .duration(500)
+                        .style("fill-opacity", 0.75)
+                        .attr( "font-size", function(e) { return ( y(e.y0) - y(e.y1) ) * capHeightAdjust; } )
+                        
+                    }
+
+                                            
+                   </script>
+                     
+
+
+
+
+    </body>
+
+
+
+</html>
